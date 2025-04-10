@@ -1,0 +1,122 @@
+[gd_scene load_steps=18 format=3 uid="uid://bh3wh84w1ql2m"]
+
+[ext_resource type="Script" uid="uid://bq1ekxkqnefb8" path="res://scenes/player.gd" id="1_d2wvv"]
+[ext_resource type="Texture2D" uid="uid://d1lhb2dleaghk" path="res://assets/space-marine/Sprites/Run/sprites/run1.png" id="1_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://uc0fwnimq2wi" path="res://assets/space-marine/Sprites/Run/sprites/run2.png" id="2_d2wvv"]
+[ext_resource type="Texture2D" uid="uid://dohhiq7vvhnve" path="res://assets/space-marine/Sprites/Idle/sprites/idle1.png" id="2_oprun"]
+[ext_resource type="Texture2D" uid="uid://ck4046jdcmtra" path="res://assets/space-marine/Sprites/Run/sprites/run3.png" id="3_3v2ag"]
+[ext_resource type="Texture2D" uid="uid://5xe0mmbduyrg" path="res://assets/space-marine/Sprites/Idle/sprites/idle2.png" id="3_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://c2yh5rr6patjr" path="res://assets/space-marine/Sprites/Run/sprites/run4.png" id="4_jej6c"]
+[ext_resource type="Texture2D" uid="uid://bjc74igqmkvve" path="res://assets/space-marine/Sprites/Idle/sprites/idle3.png" id="4_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://dsmia0odumreh" path="res://assets/space-marine/Sprites/Run/sprites/run5.png" id="5_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://b02gkr3vbdxcs" path="res://assets/space-marine/Sprites/Idle/sprites/idle4.png" id="5_fulsm"]
+[ext_resource type="Texture2D" uid="uid://b4fv7pvlyjs81" path="res://assets/space-marine/Sprites/Run/sprites/run6.png" id="6_oprun"]
+[ext_resource type="Texture2D" uid="uid://bbmvc2ebpa22y" path="res://assets/space-marine/Sprites/Run/sprites/run7.png" id="7_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://be35gmniiew4x" path="res://assets/space-marine/Sprites/Run/sprites/run8.png" id="8_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://crjfuhb7ynd03" path="res://assets/space-marine/Sprites/Run/sprites/run9.png" id="9_fulsm"]
+[ext_resource type="Texture2D" uid="uid://dk42ld5hoxxmi" path="res://assets/space-marine/Sprites/Run/sprites/run10.png" id="10_4r5pv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60mlk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oprun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_a8ls1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qfm1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fulsm")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_y4r1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d2wvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3v2ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jej6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f1ej7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oprun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a8ls1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qfm1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fulsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_4r5pv")
+}],
+"loop": true,
+"name": &"run",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_4r5pv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_fulsm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qfm1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_a8ls1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oprun")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f1ej7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jej6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3v2ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_d2wvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_y4r1p")
+}],
+"loop": true,
+"name": &"run_backwards",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2wvv"]
+size = Vector2(13, 28)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_d2wvv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.99606, 1.00791)
+sprite_frames = SubResource("SpriteFrames_60mlk")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.5, 7)
+shape = SubResource("RectangleShape2D_d2wvv")

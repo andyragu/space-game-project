@@ -4,29 +4,24 @@ extends CharacterBody2D
 
 const SPEED = 150.0
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y += gravity * delta
-		
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y += gravity * delta
+func get_input():
+	var dir_x = Input.get_axis("ui_left", "ui_right")
+	var dir_y = Input.get_axis("ui_up", "ui_down")
 	
-	var direction = Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+	var dir = Vector2(dir_x, dir_y).normalized()
 	
+	velocity = dir * SPEED
+	handle_movement_animation(dir)
+	
+func _physics_process(_delta):
+	get_input()
 	move_and_slide()
-	handle_movement_animation(direction)
 
-func handle_movement_animation(direction):
-	
-	if direction > 0:
-		animated_sprite.play("run")
-	elif  direction == 0:
+func handle_movement_animation(dir):
+	##TODO: Change movement from keys to point and click
+	if dir > Vector2(0, 0):
+		animated_sprite.play("move-r")
+	elif  dir == Vector2(0, 0):
 		animated_sprite.play("idle")
-	elif direction < 0:
-		animated_sprite.play("run_backwards")
+	elif dir < Vector2(0, 0):
+		animated_sprite.play("move-d")

@@ -471,7 +471,7 @@ script = ExtResource("1_d2wvv")
 position = Vector2(-2.00001, -14)
 scale = Vector2(0.75, 0.774)
 sprite_frames = SubResource("SpriteFrames_60mlk")
-animation = &"idle-up"
+animation = &"move-up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-12, -13)
